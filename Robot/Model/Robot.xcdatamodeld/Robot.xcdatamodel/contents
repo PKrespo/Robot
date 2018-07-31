@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Client" representedClassName="Client" syncable="YES" codeGenerationType="class">
+        <attribute name="desde" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="platform" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Platform" inverseName="client" inverseEntity="Platform" syncable="YES"/>
+        <relationship name="proposal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Proposal" inverseName="client" inverseEntity="Proposal" syncable="YES"/>
+        <relationship name="sequency" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Sequency" inverseName="clienteSeq" inverseEntity="Sequency" syncable="YES"/>
+    </entity>
+    <entity name="Platform" representedClassName="Platform" syncable="YES" codeGenerationType="class">
+        <attribute name="lastRelease" optional="YES" attributeType="String" defaultValueString="1.0.0" syncable="YES"/>
+        <attribute name="platformName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="client" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Client" inverseName="platform" inverseEntity="Client" syncable="YES"/>
+        <relationship name="proposal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Proposal" inverseName="platform" inverseEntity="Proposal" syncable="YES"/>
+    </entity>
+    <entity name="Proposal" representedClassName="Proposal" syncable="YES" codeGenerationType="class">
+        <attribute name="descricao" optional="YES" attributeType="String" defaultValueString="(descrição da proposta está vazia)" syncable="YES"/>
+        <attribute name="proposalID" optional="YES" attributeType="String" defaultValueString="1" syncable="YES"/>
+        <attribute name="solicitacao" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="proposal" inverseEntity="Client" syncable="YES"/>
+        <relationship name="platform" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Platform" inverseName="proposal" inverseEntity="Platform" syncable="YES"/>
+    </entity>
+    <entity name="Sequency" representedClassName="Sequency" syncable="YES" codeGenerationType="class">
+        <attribute name="numberOfSequency" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="clienteSeq" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="sequency" inverseEntity="Client" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Client" positionX="-20" positionY="180" width="128" height="148"/>
+        <element name="Platform" positionX="-261" positionY="20" width="128" height="103"/>
+        <element name="Proposal" positionX="232" positionY="9" width="128" height="120"/>
+        <element name="Sequency" positionX="-261" positionY="306" width="128" height="73"/>
+    </elements>
+</model>
